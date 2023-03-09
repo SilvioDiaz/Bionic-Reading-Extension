@@ -19,7 +19,9 @@ function transformByonicReading(string){
     if(words.length > 1){
       const newWords = words.map((word) => {
 
-        if(word.split(" ").length > 1){
+        if(word.search(" ") >= 0 && word.search(checkHtml) === -1) return word.split(" ");
+
+        if(word !== string[i].textContent && word.search(checkHtml) === -1){
           return word.split(" ");
         }else{
           return word
@@ -29,6 +31,7 @@ function transformByonicReading(string){
     }
 
     const boldWords =  words.map((word) =>{
+      
       let lettersNumber = word.length > 1 ? Math.round(word.length / 2) : 1;
 
       if(word.search(checkHtml) === -1 ){
