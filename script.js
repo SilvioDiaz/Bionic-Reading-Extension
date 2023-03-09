@@ -27,7 +27,10 @@ function transformByonicReading(string){
           return word
         }
       })
+      
       words = newWords.flat(1);
+    }else{
+      if(words[0].search(" ") >= 0 && words[0].search(checkHtml) === -1) words = words[0].split(" ");
     }
 
     const boldWords =  words.map((word) =>{
